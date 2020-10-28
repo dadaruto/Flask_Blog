@@ -65,15 +65,15 @@ def delete_post(post_id):
 # save the json in static folder with the name "posts.json"
 # then got to localhost:5000/debug_add_posts
 # warning: make sure you already have 2 users before doing this!
-@posts.route("/debug_add_posts")
-def debug_add_post():
-    json_path = os.path.join(app.root_path, 'static', 'posts.json')
-    with open(json_path) as json_file:
-        data = json.load(json_file)
-        for post_data in data:
-            author = User.query.get(post_data['user_id'])
-            post = Post(title=post_data['title'], content=post_data['content'], author=author)
-            db.session.add(post)
-            db.session.commit()
-    flash("Posts have been added!", "success")
-    return redirect(url_for('home'))
+# @posts.route("/debug_add_posts")
+# def debug_add_post():
+#     json_path = os.path.join(app.root_path, 'static', 'posts.json')
+#     with open(json_path) as json_file:
+#         data = json.load(json_file)
+#         for post_data in data:
+#             author = User.query.get(post_data['user_id'])
+#             post = Post(title=post_data['title'], content=post_data['content'], author=author)
+#             db.session.add(post)
+#             db.session.commit()
+#     flash("Posts have been added!", "success")
+#     return redirect(url_for('home'))
